@@ -8,6 +8,8 @@ function autoload($classname)
         require_once "core" . DIRECTORY_SEPARATOR . $classname . ".php";
     }elseif (file_exists("controller" . DIRECTORY_SEPARATOR ."admin".DIRECTORY_SEPARATOR. $classname . ".php")) {
         require_once "controller" . DIRECTORY_SEPARATOR ."admin".DIRECTORY_SEPARATOR. $classname . ".php";
+    }elseif (file_exists("controller" . DIRECTORY_SEPARATOR ."admin".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR. $classname . ".php")) {
+        require_once "controller" . DIRECTORY_SEPARATOR ."admin".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR. $classname . ".php";
     }
 
 }

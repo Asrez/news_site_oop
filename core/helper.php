@@ -21,27 +21,38 @@ class helper
         return self::currentDomain() . $_SERVER['REQUEST_URI'];
     }
 
-    public static  function methodField()
+    public static function methodField()
     {
         return $_SERVER['REQUEST_METHOD'];
     }
 
-    public static function url($url){
+    public static function url($url)
+    {
 
         $domain = trim(CURRENT_DOMAIN, '/ ');
-        $url = $domain . '/' . trim($url, '/')."/";
+        $url = $domain . '/' . $url;
         return $url;
     }
 
-    protected function redirect($url)
+    public static function redirect($url)
     {
-        header('Location: '. trim($this->currentDomain, '/ ') . '/' . trim($url, '/ '));
+        header('Location: '. trim(CURRENT_DOMAIN, '/ ') . '/' . trim($url, '/ '));
         exit;
     }
 
-    protected function redirectBack()
+    public static function redirectBack()
     {
-        header('Location: '. $_SERVER['HTTP_REFERER']);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
+
+
+    public static function dd($var)
+    {
+        echo '<pre>';
+        var_dump($var);
+        exit;
+    }
+
+
 }

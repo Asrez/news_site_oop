@@ -3,15 +3,18 @@
 require_once "autoloder.php";
 
 
+date_default_timezone_set("Asia/Tehran");
+
 const DB_SERVER = "localhost";
 const DB_NAME = "project";
 const DB_USER = "root";
 const DB_PASS = "";
 
+$db = new database();
+
 //config
 define('BASE_PATH', __DIR__);
 define('CURRENT_DOMAIN', helper::currentDomain() . '/news_site_oop');
-
 
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
@@ -52,15 +55,13 @@ function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
     exit();
 }
 
-uri("database/creat", "database", "a");
-uri("mmd/a1", "helper", "a1");
-uri("ali/a1", "helper", "a1");
 
+uri("admin/category", "category", "index");
 uri("admin/category/create", "category", "create");
+uri("admin/category/store", "category", "store","POST");
 uri("admin/category/edit/{id}", "category", "edit");
-
-
-
+uri("admin/category/update/{id}", "category", "update","POST");
+uri("admin/category/delete/{id}", "category", "delete");
 
 
 echo "404";
