@@ -26,24 +26,22 @@ class helper
         return $_SERVER['REQUEST_METHOD'];
     }
 
-    public function a1()
-    {
-        echo "a1";
+    public static function url($url){
+
+        $domain = trim(CURRENT_DOMAIN, '/ ');
+        $url = $domain . '/' . trim($url, '/')."/";
+        return $url;
     }
-    public function a2()
+
+    protected function redirect($url)
     {
-        echo "a2";
+        header('Location: '. trim($this->currentDomain, '/ ') . '/' . trim($url, '/ '));
+        exit;
     }
-    public function a3()
+
+    protected function redirectBack()
     {
-        echo "a3";
-    }
-    public function a4()
-    {
-        echo "a4";
-    }
-    public function a5()
-    {
-        echo "a5";
+        header('Location: '. $_SERVER['HTTP_REFERER']);
+        exit;
     }
 }
