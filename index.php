@@ -12,10 +12,11 @@ const DB_PASS = "";
 
 $db = new database();
 
+session_start();
+
 //config
 define('BASE_PATH', __DIR__);
 define('CURRENT_DOMAIN', helper::currentDomain() . '/news_site_oop');
-
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
@@ -55,6 +56,7 @@ function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
     exit();
 }
 
+//category
 
 uri("admin/category", "category", "index");
 uri("admin/category/create", "category", "create");
@@ -62,6 +64,18 @@ uri("admin/category/store", "category", "store","POST");
 uri("admin/category/edit/{id}", "category", "edit");
 uri("admin/category/update/{id}", "category", "update","POST");
 uri("admin/category/delete/{id}", "category", "delete");
+
+
+//post
+uri("admin/post", "post", "index");
+uri("admin/post/create", "post", "create");
+uri("admin/post/store", "post", "store","POST");
+uri("admin/post/edit/{id}", "post", "edit");
+uri("admin/post/update/{id}", "post", "update","POST");
+uri("admin/post/delete/{id}", "post", "delete");
+uri("admin/post/show/{id}", "post", "show");
+uri("admin/post/edit/braking/{id}", "post", "edit_braking");
+uri("admin/post/edit/selected/{id}", "post", "edit_selected");
 
 
 echo "404";

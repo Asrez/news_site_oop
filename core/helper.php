@@ -30,13 +30,13 @@ class helper
     {
 
         $domain = trim(CURRENT_DOMAIN, '/ ');
-        $url = $domain . '/' . $url;
+        $url = $domain . '/' . trim($url, '/');
         return $url;
     }
 
     public static function redirect($url)
     {
-        header('Location: '. trim(CURRENT_DOMAIN, '/ ') . '/' . trim($url, '/ '));
+        header('Location: ' . trim(CURRENT_DOMAIN, '/ ') . '/' . trim($url, '/ '));
         exit;
     }
 
@@ -52,6 +52,48 @@ class helper
         echo '<pre>';
         var_dump($var);
         exit;
+    }
+
+    public static function limit_word(string $string, int $limit)
+    {
+        $string = trim($string, " ");
+        $array_text = explode(" ", $string);
+        $array_text = array_slice($array_text, 0, $limit);
+        return implode(" ", $array_text);
+    }
+
+    public static function saveImage($image, $imagePath, $imageName = null)
+    {
+
+        if ($imageName) {
+            $extension = explode('/', $image['type'])[1];
+            $imageName = $imageName . '.' . $extension;
+        } else {
+            $extension = explode('/', $image['type'])[1];
+            $imageName = date("Y-m-d-H-i-s") . '.' . $extension;
+        }
+
+        $imageTemp = $image['tmp_name'];
+        $imagePath = 'public/' . $imagePath . '/';
+
+        if (is_uploaded_file($imageTemp)) {
+            if (move_uploaded_file($imageTemp, $imagePath . $imageName)) {
+                return $imagePath . $imageName;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+    }
+
+    public static function removeImage($path)
+    {
+        $path = trim($path, '/ ');
+        if (file_exists($path)) {
+            unlink($path);
+        }
     }
 
 

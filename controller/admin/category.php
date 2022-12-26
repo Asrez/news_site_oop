@@ -28,6 +28,7 @@ class category
     public static function edit($id)
     {
         $category = database::select("SELECT * FROM `categories` WHERE `id`=?", [$id])->fetch(PDO::FETCH_OBJ);
+
         require_once "view/admin/category/edit.php";
     }
 
