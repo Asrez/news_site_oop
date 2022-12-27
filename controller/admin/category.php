@@ -32,18 +32,18 @@ class category
         require_once "view/admin/category/edit.php";
     }
 
-    public static function update($request,$id)
+    public static function update($request, $id)
     {
 
 // update('users', 2, ['username', 'password'], ['alik2', 12345]);
-        database::update("categories",$id,array_keys($request),$request);
+        database::update("categories", $id, array_keys($request), $request);
         helper::redirect("admin/category");
 
     }
 
     public static function delete($id)
     {
-        database::delete("categories",$id);
+        database::delete("categories", $id);
         helper::redirect("admin/category");
     }
 }

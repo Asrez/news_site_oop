@@ -71,11 +71,21 @@ uri("admin/post", "post", "index");
 uri("admin/post/create", "post", "create");
 uri("admin/post/store", "post", "store","POST");
 uri("admin/post/edit/{id}", "post", "edit");
-uri("admin/post/update/{id}", "post", "update","POST");
+uri("admin/post/update/{id}", "category", "update","POST");
 uri("admin/post/delete/{id}", "post", "delete");
 uri("admin/post/show/{id}", "post", "show");
 uri("admin/post/edit/braking/{id}", "post", "edit_braking");
 uri("admin/post/edit/selected/{id}", "post", "edit_selected");
+
+
+//user
+uri("admin/user", "user", "index");
+uri("admin/user/edit/{id}", "user", "edit");
+uri("admin/user/delete/{id}", "user", "delete");
+uri("admin/user/update/{id}", "user", "update","POST");
+uri("admin/user/permission_edit/{id}", "user", "permission_edit");
+
+
 
 
 echo "404";
