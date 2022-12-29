@@ -2,6 +2,9 @@
 
 require_once "autoloder.php";
 
+require_once "controller/admin/category.php";
+require_once "controller/app/category.php";
+require_once "controller/app/post.php";
 
 date_default_timezone_set("Asia/Tehran");
 
@@ -58,12 +61,12 @@ function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 
 //category
 
-uri("admin/category", "category", "index");
-uri("admin/category/create", "category", "create");
-uri("admin/category/store", "category", "store","POST");
-uri("admin/category/edit/{id}", "category", "edit");
-uri("admin/category/update/{id}", "category", "update","POST");
-uri("admin/category/delete/{id}", "category", "delete");
+uri("admin/category", "admin\category", "index");
+uri("admin/category/create", "admin\category", "create");
+uri("admin/category/store", "admin\category", "store","POST");
+uri("admin/category/edit/{id}", "admin\category", "edit");
+uri("admin/category/update/{id}", "admin\category", "update","POST");
+uri("admin/category/delete/{id}", "admin\category", "delete");
 
 
 //post
@@ -84,6 +87,35 @@ uri("admin/user/edit/{id}", "user", "edit");
 uri("admin/user/delete/{id}", "user", "delete");
 uri("admin/user/update/{id}", "user", "update","POST");
 uri("admin/user/permission_edit/{id}", "user", "permission_edit");
+
+//comment
+uri("admin/comment", "comment", "index");
+uri("admin/comment/delete/{id}", "comment", "delete");
+uri("admin/user/status_edit_to_approved/{id}", "comment", "status_edit_to_approved");
+uri("admin/user/status_edit_to_seen/{id}", "comment", "status_edit_to_seen");
+
+//banner
+uri("admin/banner", "banner", "index");
+uri("admin/banner/create", "banner", "create");
+uri("admin/banner/delete/{id}", "comment", "delete");
+uri("admin/banner/edit/{id}", "banner", "edit");
+uri("admin/banner/update/{id}", "banner", "update","POST");
+
+uri("admin/menu", "menu", "index");
+uri("admin/menu/create", "menu", "create");
+uri("admin/menu/delete/{id}", "menu", "delete");
+uri("admin/menu/edit/{id}", "menu", "edit");
+uri("admin/menu/update/{id}", "menu", "update","POST");
+
+
+
+
+////app
+
+uri("","app\post","index");
+uri("about_us","app\post","about_us");
+uri("test/{id}/{id}","app\post","test");
+
 
 
 

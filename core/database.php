@@ -1,5 +1,6 @@
 <?php
 
+
 class database
 {
     public static $conn = "";
