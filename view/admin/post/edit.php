@@ -14,6 +14,10 @@
                     <input type="text" class="form-control" id="title" name="title"
                            value="<?= $post->title ?>">
                 </div>
+                <?php if (isset($_SESSION["error"]["empty_category"])) { ?>
+                    <div style="color: red" > <?= $_SESSION["error"]["empty_category"] ?> </div>
+                    <?php unset($_SESSION["error"]["empty_category"]);
+                } ?>
                 <div class="form-group" style="width: 100px;">
                     <label for="cat_id">Category</label><br>
                     <?php foreach ($all_categories as $category_item): ?>
@@ -38,7 +42,8 @@
 
                 <div class="form-group">
                     <label for="published_at">published at</label>
-                    <input type="text" class="form-control" id="published_at" name="published_at" value="<?=$post->published_at?>" required
+                    <input type="text" class="form-control" id="published_at" name="published_at"
+                           value="<?= $post->published_at ?>" required
                            autofocus>
                 </div>
 

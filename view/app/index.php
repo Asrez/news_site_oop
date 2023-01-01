@@ -110,7 +110,12 @@
 
                         <!-- Start banner-ads Area -->
                         <div class="col-lg-12 ad-widget-wrap mt-30 mb-30">
-                            <img class="img-fluid" src="img/banner-ad.jpg" alt="">
+                            <?php if (isset($banners_down)) {?>
+                                <img class="img-fluid" src="<?=helper::url($banners_down->image)?>" alt="">
+                            <?php } else { ?>
+                                <img class="img-fluid" src="img/banner-ad.jpg" alt="">
+
+                            <?php } ?>
                         </div>
                         <!-- End banner-ads Area -->
                         <!-- Start popular-post Area -->
@@ -122,21 +127,22 @@
                                         <div class="feature-img-wrap relative">
                                             <div class="feature-img relative">
                                                 <div class="overlay overlay-bg"></div>
-                                                <img class="img-fluid" src="img/f2.jpg" alt="">
+                                                <img class="img-fluid" src="<?= $post->image ?>" alt="">
                                             </div>
                                         </div>
                                         <div class="details">
                                             <a href="image-post.php">
-                                                <h4><?=$post->title?></h4>
+                                                <h4><?= $post->title ?></h4>
                                             </a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-user"></span>ادمین</a></li>
-                                                <li><a href="#"><?=$post->created_at?><span class="lnr lnr-calendar-full"></span></a>
+                                                <li><a href="#"><?= $post->created_at ?><span
+                                                                class="lnr lnr-calendar-full"></span></a>
                                                 </li>
                                                 <li><a href="#"> ۵<span class="lnr lnr-bubble"></span></a></li>
                                             </ul>
                                             <p class="excert">
-                                                <?=$post->summary?>
+                                                <?= $post->summary ?>
                                             </p>
                                         </div>
                                     </div>
@@ -146,9 +152,7 @@
                         <!-- End popular-post Area -->
                     </div>
                     <div class="col-lg-4">
-
                         <?php require_once "view/app/part/sidebar.php" ?>
-
                     </div>
                 </div>
             </div>

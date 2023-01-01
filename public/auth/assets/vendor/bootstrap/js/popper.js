@@ -71,7 +71,7 @@ function microtaskDebounce(fn) {
   return function () {
     if (!scheduled) {
       scheduled = true;
-      elem.setAttribute('x-index', i);
+      elem.setAttribute('x-post', i);
       i = i + 1; // don't use compund (+=) because it doesn't get optimized in V8
     }
   };
@@ -802,7 +802,7 @@ function find(arr, check) {
 }
 
 /**
- * Return the index of the matching object
+ * Return the post of the matching object
  * @method
  * @memberof Popper.Utils
  * @argument {Array} arr
@@ -1617,7 +1617,7 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
 function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   var offsets = [0, 0];
 
-  // Use height if placement is left or right and index is 0 otherwise use width
+  // Use height if placement is left or right and post is 0 otherwise use width
   // in this way the first offset will use an axis and the second one
   // will use the other one
   var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;

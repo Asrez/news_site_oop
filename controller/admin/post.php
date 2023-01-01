@@ -39,7 +39,7 @@ class post
 
     public static function create()
     {
-        $all_categories = database::select("SELECT id,name FROM categories")->fetchAll(PDO::FETCH_OBJ);
+        $all_categories = database::select("SELECT id,name FROM categories")->fetch(PDO::FETCH_OBJ);
         require_once "view/admin/post/create.php";
     }
 
@@ -91,12 +91,39 @@ class post
 
     public static function update($request, $id)
     {
+        if (isset($request["category"])) {
+            $categories = $request["category"];
+            unset($request["category"]);
+        } else {
+            $_SESSION["error"] = ["empty_category" => "حداقل یک دسته بندی انتخاب کنید"];
+            helper::redirect("admin/post/edit/$id");
+        }
 
+        if ($request["image"]["tmp_name"] == "") {
+            unset($request["image"]);
+        } else {
+            $request['image'] = helper::saveImage($request['image'], 'post-image');
+        }
+        database::update("posts", $id, array_keys($request), $request);
+        $sql = "DELETE FROM `post_category` WHERE `post_id`=:post_id";
+        $stmt = database::$conn->prepare($sql);
+        $stmt->bindValue("post_id", $id);
+        $stmt->execute();
+
+        foreach ($categories as $category) {
+            $sql = "INSERT INTO `post_category`( `post_id`, `category_id`) VALUES (:post_id,:category)";
+            $stmt = database::$conn->prepare($sql);
+            $stmt->bindValue("post_id", $id);
+            $stmt->bindValue("category", $category);
+            $stmt->execute();
+        }
+        helper::redirect("admin/post");
     }
+
 
     public static function delete($id)
     {
-        database::delete("posts",$id);
+        database::delete("posts", $id);
         helper::redirect("admin/post");
 
     }
@@ -126,5 +153,30 @@ class post
             database::update("posts", $id, ["is_selected"], [0]);
         }
         helper::redirectBack();
+    }
+
+    public static function test()
+    {
+        /*
+          foreach ($categories as $category) {
+                foreach ($old_cats as $cat) {
+                    if ($cat->category_id != $category) {
+                        $sql = "INSERT INTO `post_category`(`post_id`, `category_id`) VALUES (:id,:category)";
+                        $stmt = database::$conn->prepare($sql);
+                        $stmt->bindValue("id", $id);
+                        $stmt->bindValue("category", $category);
+                        $stmt->execute();
+                        break;
+                    }
+                }
+            }
+
+            foreach ($old_cats as $cat) {
+                foreach ($categories as $category) {
+                    if ($cat->category_id != $category) {
+                        database::delete("post_category", $cat->id);
+                    }
+                }
+            }*/
     }
 }

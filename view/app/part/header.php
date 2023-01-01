@@ -60,29 +60,58 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-4 col-md-4 col-sm-12 logo-left no-padding">
-                    <a href="index.php">
+                    <a href="index.html">
                         <img class="img-fluid" src="img/logo.png" alt="">
                     </a>
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
-                    <img class="img-fluid" src="img/banner-ad.jpg" alt="">
-                </div>
+                <?php if (isset($banners_top)) {?>
+                    <div class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
+                        <img class="img-fluid"  src="<?=helper::url($banners_top->image)?>" alt="">
+                    </div>
+                <?php } else {?>
+                    <div class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
+                        <img class="img-fluid" src="img/banner-ad.jpg" alt="">
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
     <div class="container main-menu" id="main-menu">
+        <div class="row align-items-center justify-content-between">
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <?php foreach ($all_menus as $menu) { ?>
+                        <?php if ($menu->parent_id == 0) { ?>
+                            <li class="menu-active"  ><?= $menu->name ?></a>
+                                <ul>
+                                    <?php foreach ($all_menus as $menu_item) { ?>
 
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                                        <?php if ($menu_item->parent_id == $menu->id) { ?>
+
+                                            <li><a href="<?=$menu_item->url?>" target="_blank" > <?= $menu_item->name ?> </a></li>
+
+                                        <?php } ?>
+
+                                    <?php } ?>
+                                </ul>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
+            <div class="navbar-right">
+                <form class="Search" action="" >
+                    <input type="text" class="form-control Search-box" name="Search-box" id="Search-box"
+                           placeholder="جستجو">
+                    <label for="Search-box" class="Search-box-label">
+                        <span class="lnr lnr-magnifier"></span>
+                    </label>
+                    <span class="Search-close">
+								<span class="lnr lnr-cross"></span>
+                        </span>
+                </form>
             </div>
         </div>
-            <!-- #nav-menu-container -->
-
     </div>
 </header>
