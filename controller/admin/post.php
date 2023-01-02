@@ -39,12 +39,15 @@ class post
 
     public static function create()
     {
-        $all_categories = database::select("SELECT id,name FROM categories")->fetch(PDO::FETCH_OBJ);
+        $all_categories = database::select("SELECT id,name FROM categories")->fetchAll(PDO::FETCH_OBJ);
         require_once "view/admin/post/create.php";
     }
 
     public static function store($request)
     {
+        //convert from mili s to s and add as datetime
+        $request["published_at"] = date("Y-m-d H:i:s", $request["published_at"] / 1000);
+
         if (isset($request["categories"])) {
             $categories = $request["categories"];
             unset($request["categories"]);
@@ -91,6 +94,9 @@ class post
 
     public static function update($request, $id)
     {
+        //convert from mili s to s and add as datetime
+        $request["published_at"] = date("Y-m-d H:i:s", $request["published_at"] / 1000);
+        
         if (isset($request["category"])) {
             $categories = $request["category"];
             unset($request["category"]);

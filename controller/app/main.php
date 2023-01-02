@@ -3,7 +3,7 @@
 
 class main
 {
-    public function __construct()
+    public static function index()
     {
 
         //selected news
@@ -34,16 +34,12 @@ class main
         }
 
         ///top_nav
-
         $all_menus = \database::select("SELECT * FROM `menus`")->fetchAll(\PDO::FETCH_OBJ);
-
 
         //ads_banner
         $banners_top = \database::select("SELECT * FROM `banners` WHERE `position`='top'")->fetch(\PDO::FETCH_OBJ);
         $banners_side = \database::select("SELECT * FROM `banners` WHERE `position`='side'")->fetch(\PDO::FETCH_OBJ);
         $banners_down = \database::select("SELECT * FROM `banners`WHERE `position`='down'")->fetch(\PDO::FETCH_OBJ);
-
-
 
     }
 }

@@ -66,11 +66,11 @@ function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 
 //dashboard
 
-uri("admin", "admin\dashboard", "post");
+uri("admin", "admin\dashboard", "index");
 
 //category
 
-uri("admin/category", "admin\category", "post");
+uri("admin/category", "admin\category", "index");
 uri("admin/category/create", "admin\category", "create");
 uri("admin/category/store", "admin\category", "store","POST");
 uri("admin/category/edit/{id}", "admin\category", "edit");
@@ -79,7 +79,7 @@ uri("admin/category/delete/{id}", "admin\category", "delete");
 
 
 //post
-uri("admin/post", "post", "post");
+uri("admin/post", "post", "index");
 uri("admin/post/create", "post", "create");
 uri("admin/post/store", "post", "store","POST");
 uri("admin/post/edit/{id}", "post", "edit");
@@ -91,20 +91,20 @@ uri("admin/post/edit/selected/{id}", "post", "edit_selected");
 
 
 //user
-uri("admin/user", "user", "post");
+uri("admin/user", "user", "index");
 uri("admin/user/edit/{id}", "user", "edit");
 uri("admin/user/delete/{id}", "user", "delete");
 uri("admin/user/update/{id}", "user", "update","POST");
 uri("admin/user/permission_edit/{id}", "user", "permission_edit");
 
 //comment
-uri("admin/comment", "comment", "post");
+uri("admin/comment", "comment", "index");
 uri("admin/comment/delete/{id}", "comment", "delete");
 uri("admin/user/status_edit_to_approved/{id}", "comment", "status_edit_to_approved");
 uri("admin/user/status_edit_to_seen/{id}", "comment", "status_edit_to_seen");
 
 //banner
-uri("admin/banner", "banner", "post");
+uri("admin/banner", "banner", "index");
 uri("admin/banner/create", "banner", "create");
 uri("admin/banner/store", "banner", "store","POST");
 uri("admin/banner/delete/{id}", "banner", "delete");
@@ -112,7 +112,7 @@ uri("admin/banner/edit/{id}", "banner", "edit");
 uri("admin/banner/update/{id}", "banner", "update","POST");
 
 //menus
-uri("admin/menu", "admin\menu", "post");
+uri("admin/menu", "admin\menu", "index");
 uri("admin/menu/create", "admin\menu", "create");
 uri("admin/menu/store", "admin\menu", "store","POST");
 uri("admin/menu/delete/{id}", "admin\menu", "delete");

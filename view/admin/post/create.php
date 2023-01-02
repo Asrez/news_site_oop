@@ -13,8 +13,8 @@
                 <form method="post" action="<?= helper::url("admin/post/store") ?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title"  placeholder="Enter title ..."
-                                autofocus>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title ..."
+                               autofocus>
                     </div>
 
                     <?php foreach ($all_categories as $category_item): ?>
@@ -26,22 +26,26 @@
 
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <input type="file" id="image" name="image" class="form-control-file"  autofocus>
+                        <input type="file" id="image" name="image" class="form-control-file" autofocus>
                     </div>
 
                     <div class="form-group">
                         <label for="published_at">published at</label>
-                        <input type="text" class="form-control" id="title" name="published_at" value="<?=date("Y-m-d H:i:s",time())?>" autofocus></div>
+                        <input type="text" class="form-control" id="published_at" name="published_at"
+                               value="" autofocus>
+                        <input type="text" class="form-control" id="published_at_view"
+                               value="" autofocus>
+                    </div>
 
                     <div class="form-group">
                         <label for="summary">summary</label>
                         <textarea class="form-control" id="summary" name="summary" placeholder="summary ..." rows="3"
-                                   autofocus></textarea>
+                                  autofocus></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="body">body</label>
-                        <textarea class="form-control" id="body" name="body" placeholder="body ;,','..." rows="5"
+                        <textarea class="form-control" id="body" name="body" placeholder="body" rows="5"
                                   autofocus></textarea>
                     </div>
 
@@ -52,4 +56,5 @@
 
 
     </main>
+
 <?php require_once "view/admin/part/footer.php" ?>
