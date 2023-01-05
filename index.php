@@ -64,6 +64,15 @@ function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
     exit();
 }
 
+
+global $flashMessage;
+if(isset($_SESSION['flash_message'])){
+    $flashMessage = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']);
+}
+
+
+
 //dashboard
 
 uri("admin", "admin\dashboard", "index");
@@ -127,6 +136,8 @@ uri("admin/menu/update/{id}", "admin\menu", "update","POST");
 uri("","app\index","index");
 uri("about_us","app\post","about_us");
 uri("news/{id}","app\post","index");
+uri("post/add_comment/{id}","app\post","add_comment","POST");
+uri("captcha","app\main","captcha");
 
 uri("test/{id}/{id}","app\post","test");
 

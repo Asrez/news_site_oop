@@ -1,6 +1,6 @@
 <?php
 
-class comment   
+class comment
 {
     public static function index()
     {

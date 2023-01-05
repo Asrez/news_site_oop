@@ -1,4 +1,4 @@
-<?php require_once "view/app/part/header.php"?>
+<?php require_once "view/app/part/header.php" ?>
     <div class="site-main-container">
         <!-- Start top-post Area -->
         <!-- End top-post Area -->
@@ -11,28 +11,17 @@
                         <div class="single-post-wrap">
                             <div class="feature-img-thumb relative">
                                 <div class="overlay overlay-bg"></div>
-                                <img class="img-fluid" src="img/f1.jpg" alt="">
+                                <img class="img-fluid" src="<?= helper::url($post->image) ?>" alt="">
                             </div>
                             <div class="content-wrap">
-                                <ul class="tags mt-10">
-                                    <li><a href="#">دسته بندی</a></li>
-                                </ul>
-                                <a href="#">
-                                    <h3>عنوان</h3>
-                                </a>
+                                <h3><?= $post->title ?></h3>
                                 <ul class="meta pb-20">
-                                    <li><a href="#"><span class="lnr lnr-user"></span>ادمین</a></li>
-                                    <li><a href="#">۱۳۹۹/۲۲/۳۳<span class="lnr lnr-calendar-full"></span></a></li>
+                                    <li><a href="#"><span class="lnr lnr-user"></span><?= $post->user_id ?></a></li>
+                                    <li><a href="#"><?= $post->created_at ?><span class="lnr lnr-calendar-full"></span></a>
+                                    </li>
                                     <li><a href="#">۴<span class="lnr lnr-bubble"></span></a></li>
                                 </ul>
-                                متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن
-                                اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن
-                                اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن
-                                اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن
-                                اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن
-                                اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن اصلی خبر متن
-                                اصلی خبر
-
+                                <p><?= $post->body ?> </p>
                                 <div class="navigation-wrap justify-content-between d-flex">
                                     <a class="prev" href="#"><span class="lnr lnr-arrow-right"></span>خبر بعدی</a>
                                     <a class="next" href="#">خبر قبلی<span class="lnr lnr-arrow-left"></span></a>
@@ -42,61 +31,61 @@
                                     <div class="container">
                                         <div class="row flex-column">
                                             <h6>نظرات</h6>
-                                            <div class="comment-list">
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
+                                            <?php foreach ($comments as $comment) { ?>
+                                                <div class="comment-list">
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
 
-                                                        <div class="desc">
-                                                            <h5><a href="#">نیما کریمی</a></h5>
-                                                            <p class="date mt-3">۱۳۹۹/۲۲/۲۲</p>
-                                                            <p class="comment">
-                                                                عالی بود
-                                                            </p>
+                                                            <div class="desc">
+                                                                <h4><?= $comment->name ?>:</h4>
+                                                                <p class="date mt-3"><?= $comment->created_at ?></p>
+                                                                <p class="comment">
+                                                                    <?= $comment->body ?>
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="comment-list left-padding">
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
-
-                                                        <div class="desc">
-                                                            <h5><a href="#">نیما کریمی</a></h5>
-                                                            <p class="date mt-3">۱۳۹۹/۲۲/۲۲</p>
-                                                            <p class="comment">
-                                                                عالی بود
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="comment-list">
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
-
-                                                        <div class="desc">
-                                                            <h5><a href="#">نیما کریمی</a></h5>
-                                                            <p class="date mt-3">۱۳۹۹/۲۲/۲۲</p>
-                                                            <p class="comment">
-                                                                عالی بود
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                            $message = helper::flash("comment_error");
+                            ?>
                             <div class="comment-form">
+                                <?= (!empty($message)) ? $message : "" ?>
                                 <h4>درج نظر جدید</h4>
-                                <form>
+                                <form method="POST" action="<?= helper::url("post/add_comment/$post->id") ?>">
                                     <div class="form-group">
-                                        <textarea class="form-control mb-10" rows="5" name="message" placeholder="متن نظر" onfocus="this.placeholder = ''" onblur="this.placeholder = 'متن نظر'" required=""></textarea>
+                                        <div class="row">
+                                            <div class="col-8">
+                                            <textarea class="form-control mb-10" rows="4" name="body"
+                                                      placeholder="متن نظر" onfocus="this.placeholder = ''"
+                                                      onblur="this.placeholder = 'متن نظر'" required=""></textarea>
+                                            </div>
+                                            <div class="col-4">
+                                                <input class="form-control mb-3" type="email" name="email" id=""
+                                                       placeholder="ایمیل">
+                                                <input class="form-control mb-3" type="text" name="name" id=""
+                                                       placeholder="نام">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="mt-2 ml-5"> لطفا عدد مقابل را در کادر روبرو وارد کنید </span>
+                                                <img class="mr-4" src="<?= helper::url("captcha") ?>" alt="" width="120"
+                                                     height="40">
+                                            </div>
+                                            <div class="col-4">
+                                                <input class="form-control" type="text" name="captcha" id="">
+                                                <input type="submit" class="primary-btn text-uppercase mt-4"
+                                                       value="ارسال">
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <a href="#" class="primary-btn text-uppercase">ارسال</a>
                                 </form>
                             </div>
                         </div>
@@ -104,7 +93,7 @@
                     </div>
                     <div class="col-lg-4">
 
-                        <?php require_once "view/app/part/sidebar.php"?>
+                        <?php require_once "view/app/part/sidebar.php" ?>
                     </div>
                 </div>
             </div>
@@ -112,4 +101,4 @@
         <!-- End latest-post Area -->
     </div>
 
-  <?php require_once "view/app/part/footer.php"?>
+<?php require_once "view/app/part/footer.php" ?>

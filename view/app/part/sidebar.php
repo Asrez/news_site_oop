@@ -6,7 +6,7 @@
                 <div class="feature-img-wrap relative">
                     <div class="feature-img relative">
                         <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="<?= $news->image ?>" alt="">
+                        <img class="img-fluid" src="<?= helper::url($news->image) ?>" alt="">
                     </div>
                 </div>
                 <div class="details">
@@ -39,7 +39,7 @@
         <?php foreach ($most_comment_posts as $post): ?>
             <div class="single-list flex-row d-flex">
                 <div class="thumb">
-                    <img style="width: 100px;height: 80px" src="<?= $post->image ?>" alt="">
+                    <img style="width: 100px;height: 80px" src="<?= helper::url($post->image) ?>" alt="">
                 </div>
                 <div class="details">
                     <a href="image-post.php">
