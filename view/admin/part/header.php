@@ -26,7 +26,7 @@
 
 <body>
 
-<nav class="navbar  navbar-light bg-gradiant-green-blue nav-shadow">
+<nav class="navbar  navbar-light bg-gradiant-green-blue nav-shadow" style="" >
 
     <a class="navbar-brand" href=""></a>
     <span class="">

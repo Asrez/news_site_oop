@@ -1,7 +1,7 @@
 <?php
 
 require_once "autoloder.php";
-
+require_once "core/config.php";
 require_once "controller/admin/category.php";
 require_once "controller/admin/menu.php";
 require_once "controller/admin/dashboard.php";

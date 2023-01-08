@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= helper::url('public/auth/assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
     <!--===============================================================================================-->

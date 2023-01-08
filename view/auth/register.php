@@ -13,13 +13,17 @@
                 <img src="<?= helper::url("public/auth/assets/images/img-01.png") ?>" alt="IMG">
             </div>
 
-            <form method="post" action="<?= helper::url("store") ?>" class="login100-form validate-form">
+            <form method="post" action="<?= helper::url("store")?>" class="login100-form validate-form">
                     <span class="login100-form-title">
                         Register
                     </span>
-                <div class="mb-2 alert alert-danger"><small class="form-text text-danger">
-                        kggbb
-                    </small></div>
+                <?php $message = helper::flash("register_error");
+                if (!empty($message)) {
+                    ?>
+                    <div class="mb-2 alert alert-danger"><small class="form-text text-danger">
+                            <?= $message ?>
+                        </small></div>
+                <?php } ?>
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" name="username" placeholder="Username">
                     <span class="focus-input100"></span>
@@ -43,8 +47,9 @@
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                 </div>
-                <div class="wrap-input100 validate-input" style="text-align: center" >
-                    <img src="<?= helper::url("captcha") ?>" width="150" height="80">
+                <div class="wrap-input100 validate-input" style="text-align: center">
+                    <span id="captcha_refresh" style="cursor: pointer" > <i class="fa fa-refresh" style="font-size: 30px"></i></span>
+                    <img src="<?= helper::url("captcha") ?>" width="150" height="80" id="captcha">
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Captcha is required">
                     <input class="input100" type="text" name="Captcha" placeholder="Enter the number in the box above">
@@ -79,6 +84,15 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#captcha_refresh").click(function () {
+            $('#captcha').attr('src','captcha')
+        });
+    });
+</script>
 <?php require_once "view/auth/part/scripts.php" ?>
 
 </body>
